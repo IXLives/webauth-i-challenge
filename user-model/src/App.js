@@ -14,6 +14,10 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+      user: {
+        username: "",
+        password: ""
+      },
       users: []
     }
   }
@@ -23,7 +27,7 @@ class App extends React.Component {
       <div className="user-model">
         <Route  path = '/register' component = {Register} />
         <Route path = '/login' component = {Login} />
-        <Route path = '/userlist' component = {UserList} />
+        <Route path = '/userlist' render = {(props) => <UserList {...props} user = {this.state.user} />} />
         <h1>User Router</h1>
         <NavLink to = '/register'><Button>Register</Button></NavLink>
         <NavLink to = '/login'><Button>Login</Button></NavLink>

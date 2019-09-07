@@ -1,6 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 import {Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap'
+import axios from 'axios'
 
 class Register extends React.Component {
     constructor() {
@@ -21,6 +22,15 @@ class Register extends React.Component {
     submit = e => {
         e.preventDefault()
         const {username, password} = this.state
+        const user = this.state
+        console.log(user)
+        axios.post('http://localhost:4000/api/register', user)
+            .then(res => {
+                this.props.history.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
